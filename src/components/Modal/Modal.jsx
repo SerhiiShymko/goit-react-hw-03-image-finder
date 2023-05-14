@@ -1,29 +1,55 @@
-// import { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Component } from 'react';
+import css from './Modal.module.css';
+import { BsXLg } from 'react-icons/bs';
 
-// class Modal extends Component {
-//   componentDidMount() {
-//     document.addEventListener('keydown', this.handleESC);
-//   }
+class Modal extends Component {
+  static propTypes = {
+    title: PropTypes.string,
+    onClose: PropTypes.func.isRequired,
+    currentImageUrl: PropTypes.string,
+    currentImageDescription: PropTypes.string,
+  };
 
-//   componentWillUnmount() {
-//     document.removeEventListener('keydown', this.handleESC);
-//   }
-//   handleESC = e => {
-//     console.log('esc');
-//     if (e.code === 'Escape') {
-//       this.props.close();
-//     }
-//   };
-//   render() {
-//     const { id, largeImageURL, close } = this.props;
-//     return (
-//       <div className="overlay">
-//         <div className="modal">
-//           <img src="${largeImageURL}" alt="photo" />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleESC);
+  }
 
-// export default Modal;
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleESC);
+  }
+  handleESC = e => {
+    console.log('esc');
+    if (e.code === 'Escape') {
+      this.props.onClose();
+    }
+  };
+
+  handleClickBackdrop = e => {
+    if (e.target === e.currentTarget) {
+      this.props.onClose();
+    }
+  };
+
+  render() {
+    const { title, currentImageUrl, currentImageDescription, onClose } =
+      this.props;
+    return (
+      <div className={css.overlay}>
+        <div className={css.modal}>
+          {title && <h1 className={css.title}>{title}</h1>}
+          <button className={css.button} type="button" onClick={onClose}>
+            <BsXLg className={css.icon} />
+          </button>
+          <img
+            src={currentImageUrl}
+            alt={currentImageDescription}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Modal;
