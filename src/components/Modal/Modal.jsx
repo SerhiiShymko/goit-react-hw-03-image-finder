@@ -35,10 +35,10 @@ class Modal extends Component {
     const { title, currentImageUrl, currentImageDescription, onClose } =
       this.props;
     return (
-      <div className={css.overlay}>
+      <div className={css.overlay} onClick={this.handleClickBackdrop}>
         <div className={css.modal}>
           {title && <h1 className={css.title}>{title}</h1>}
-          <button className={css.button} type="button" onClick={onClose}>
+          <button className={css.buttonClose} type="button" onClick={onClose}>
             <BsXLg className={css.icon} />
           </button>
           <img
