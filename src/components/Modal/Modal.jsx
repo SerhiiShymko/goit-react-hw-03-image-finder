@@ -5,10 +5,9 @@ import { BsXLg } from 'react-icons/bs';
 
 class Modal extends Component {
   static propTypes = {
-    title: PropTypes.string,
-    onClose: PropTypes.func.isRequired,
-    currentImageUrl: PropTypes.string,
-    currentImageDescription: PropTypes.string,
+    selectedImage: PropTypes.string,
+    tags: PropTypes.string,
+    onClose: PropTypes.func,
   };
 
   componentDidMount() {
@@ -32,20 +31,12 @@ class Modal extends Component {
   };
 
   render() {
-    const { title, currentImageUrl, currentImageDescription, onClose } =
-      this.props;
+    const { selectedImage, tags } = this.props;
     return (
       <div className={css.overlay} onClick={this.handleClickBackdrop}>
         <div className={css.modal}>
-          {title && <h1 className={css.title}>{title}</h1>}
-          <button className={css.buttonClose} type="button" onClick={onClose}>
-            <BsXLg className={css.icon} />
-          </button>
-          <img
-            src={currentImageUrl}
-            alt={currentImageDescription}
-            loading="lazy"
-          />
+          <BsXLg className={css.icon} />
+          <img src={selectedImage} alt={tags} loading="lazy" />
         </div>
       </div>
     );

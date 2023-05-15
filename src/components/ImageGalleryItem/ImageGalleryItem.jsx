@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css';
 
-function ImageGalleryItem({ description, smallImage, largeImage, openModal }) {
+function ImageGalleryItem({ tags, smallImage, selectedImage }) {
   return (
-    <li className={css.imageGalleryItem} onClick={openModal}>
-      <img src={smallImage} alt={description} data-large={largeImage} />
+    <li className={css.imageGalleryItem}>
+      <img src={smallImage} alt={tags} onClick={selectedImage} />
     </li>
   );
 }
 
 ImageGalleryItem.prototype = {
-  description: PropTypes.string,
+  tags: PropTypes.string,
   smallImage: PropTypes.string.isRequired,
   largeImage: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired,
+  selectedImage: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;

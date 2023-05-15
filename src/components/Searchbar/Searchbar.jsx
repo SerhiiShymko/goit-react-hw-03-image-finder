@@ -14,7 +14,7 @@ class Searchbar extends Component {
   };
 
   onChangeInput = e => {
-    this.setState({ query: e.currentTarget.value });
+    this.setState({ query: e.currentTarget.value.toLowerCase() });
   };
 
   onSubmitForm = e => {

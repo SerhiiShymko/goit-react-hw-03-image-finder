@@ -2,16 +2,15 @@ import PropTypes from 'prop-types';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 
-function ImageGallery({ images, openModal }) {
+function ImageGallery({ images, selectedImage }) {
   return (
     <ul className={css.imageGallery}>
-      {images.map(({ id, description, smallImage, largeImage }) => (
+      {images.map(({ id, tags, webformatURL, largeImageURL }) => (
         <ImageGalleryItem
           key={id}
-          description={description}
-          smallImage={smallImage}
-          largeImage={largeImage}
-          openModal={openModal}
+          tags={tags}
+          smallImage={webformatURL}
+          selectedImage={() => selectedImage(largeImageURL, tags)}
         />
       ))}
     </ul>
@@ -22,9 +21,9 @@ ImageGallery.prototype = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      description: PropTypes.string,
-      smallImage: PropTypes.string.isRequired,
-      largeImage: PropTypes.string.isRequired,
+      tags: PropTypes.string,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

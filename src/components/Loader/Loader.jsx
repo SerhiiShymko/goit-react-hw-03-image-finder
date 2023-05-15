@@ -1,12 +1,18 @@
-import { BiLoaderCircle } from 'react-icons/bi';
-import css from './Loader.module.css';
+import { ThreeDots } from 'react-loader-spinner';
 
-function Loader() {
+function Spiner() {
   return (
-    <div className={css.wrapper}>
-      <BiLoaderCircle className={css.loader} />
-    </div>
+    <ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="#4fa94d"
+      ariaLabel="three-dots-loading"
+      wrapperStyle={{}}
+      wrapperClassName=""
+      visible={true}
+    />
   );
 }
 
-export default Loader;
+export default Spiner;
