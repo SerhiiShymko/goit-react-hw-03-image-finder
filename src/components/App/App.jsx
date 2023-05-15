@@ -10,6 +10,7 @@ import Modal from 'components/Modal/Modal';
 
 class App extends Component {
   state = {
+    status: 'idle',
     query: '',
     page: 1,
     imagesOnPage: 0,
@@ -72,8 +73,11 @@ class App extends Component {
         .finally(() =>
           this.setState(({ isLoading }) => ({ isLoading: !isLoading }))
         );
+    } else {
+      alert(`По запросу ${query} ничего не найдено.`);
     }
   };
+
   getSearchRequest = query => {
     this.setState({ query });
   };
