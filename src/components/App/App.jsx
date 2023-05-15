@@ -72,8 +72,6 @@ class App extends Component {
         .finally(() =>
           this.setState(({ isLoading }) => ({ isLoading: !isLoading }))
         );
-    } else {
-      alert(`Nothing was found on the request ${query}.`);
     }
   };
 
