@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import getImages from '../../services/api';
 import Searchbar from 'components/Searchbar/Searchbar';
@@ -73,7 +73,7 @@ class App extends Component {
           this.setState(({ isLoading }) => ({ isLoading: !isLoading }))
         );
     } else {
-      alert(`По запросу ${query} ничего не найдено.`);
+      toast.error(`Nothing was found on the request ${query}.`);
     }
   };
 
