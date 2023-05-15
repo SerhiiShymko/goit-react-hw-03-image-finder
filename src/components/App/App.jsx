@@ -10,7 +10,6 @@ import Modal from 'components/Modal/Modal';
 
 class App extends Component {
   state = {
-    status: 'idle',
     query: '',
     page: 1,
     imagesOnPage: 0,
